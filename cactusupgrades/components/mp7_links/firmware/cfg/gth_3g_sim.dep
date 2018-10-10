@@ -1,0 +1,6 @@
+src gth_3g/quad_wrapper_gth_3g.vhd
+src protocol/ext_align_gth_16b_3g_spartan.vhd
+src wrappers/gth_quad_wrapper_8b10bx16b_xi_3g_sim.vhd
+src wrappers/gth_quad_wrapper_8b10bx16b_sim.vhd
+
+

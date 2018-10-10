@@ -1,0 +1,20 @@
+# Wraps transceiver to provide an ipbus compatible interface.
+src gth_3g/quad_wrapper_gth_3g.vhd
+
+# Top level protocol block that handles checksums, trailers, etc.
+src protocol/ext_align_gth_16b_3g_spartan.vhd
+
+# Wraps transceiver component.  Required to swap easily between JJ & Xilinx code.
+src wrappers/gth_quad_wrapper_8b10bx16b_xi_3g.vhd
+
+# File "multi_gt" has power up fix removed (required BUFR, which isn't available)
+src gth_3g/xilinx_gth_16b_3g_cpll_multi_gt.vhd 
+
+# File "gt" file has tweaks (e.g. latency, etc)
+src gth_3g/xilinx_gth_16b_3g_cpll_gt.vhd
+
+# Unmodified code from Xilinx (e.g. RxReset & TxReset FSMs)
+src ../gen_hdl/xilinx_gth_16b_3g_cpll/*.vhd
+
+# Data checking code.  Used to assert "valid" signal to Rx FSM state machine.
+src --cd protocol data_check_8b10b.vhd usrclk_source.vhd

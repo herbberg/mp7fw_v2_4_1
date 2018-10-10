@@ -1,0 +1,4 @@
+include mp7_datapath.dep
+include -c components/mp7_links mp7_align.dep
+include -c components/mp7_links links_gth_10g.dep
+

@@ -1,0 +1,321 @@
+#----------------------------------------------------------------------
+# LPM configuration for minidaq runs.
+#----------------------------------------------------------------------
+
+#----------------------------------------
+# Inputs and sources.
+#----------------------------------------
+main.inselect.ttcmi_orbit_select                                        0x00000001
+main.inselect.cpm_orbit_select                                          0x00000000
+main.orbit_alignment_config.orbit_offset                                0x00000cfe
+
+main.inselect.external_trigger0_enable                                  0x00000001
+main.inselect.external_trigger1_enable                                  0x00000000
+main.inselect.cyclic_trigger_enable                                     0x00000000
+main.inselect.combined_software_trigger_and_bgo_enable                  0x00000001
+
+main.inselect.bunch_mask_trigger_enable                                 0x00000001
+main.bunch_mask_trigger_config.prescale                                 0x00000001
+main.bunch_mask_trigger_config.initial_prescale                         0x00000000
+
+# Random triggers (enabled but off).
+main.inselect.random_trigger_enable                                     0x00000001
+main.random_trigger_config                                              0x00000000
+
+# Delays for external triggers
+main.trigger_delay.external_trigger0_delay                              0x00000000
+main.trigger_delay.external_trigger1_delay                              0x00000000
+
+#----------------------------------------
+# Trigger rules according to CMS note 2002/033.
+#----------------------------------------
+# Not more than one L1As in 3 BX.
+trigger_rules.one_trigger_deadtime                                      0x00000002
+# Not more than two L1As in 25 BX.
+trigger_rules.two_trigger_deadtime                                      0x00000018
+# Not more than three L1As in 100 BX.
+trigger_rules.three_trigger_deadtime                                    0x00000063
+# Not more than four L1As in 240 BX.
+trigger_rules.four_trigger_deadtime                                     0x000000ef
+trigger_rules.five_trigger_deadtime                                     0x00000000
+trigger_rules.six_trigger_deadtime                                      0x00000000
+trigger_rules.seven_trigger_deadtime                                    0x00000000
+trigger_rules.eight_trigger_deadtime                                    0x00000000
+trigger_rules.nine_trigger_deadtime                                     0x00000000
+
+#----------------------------------------
+# Cyclic generator 0: LumiNibble B-go.
+#----------------------------------------
+cyclic_generator0.configuration.enabled                                 0x00000000
+#cyclic_generator0.configuration.enabled                                 0x00000001
+#cyclic_generator0.configuration.initial_prescale                        0x00000000
+#cyclic_generator0.configuration.pause                                   0x00000000
+#cyclic_generator0.configuration.permanent                               0x00000001
+#cyclic_generator0.configuration.postscale                               0x00000000
+#cyclic_generator0.configuration.prescale                                0x00001000
+#cyclic_generator0.configuration.repeat_cycle                            0x00000001
+#cyclic_generator0.configuration.start_bx                                0x00000001
+#cyclic_generator0.configuration.trigger_word.bgo_command                0x00000001
+#cyclic_generator0.configuration.trigger_word.bgo_sequence_command       0x00000000
+#cyclic_generator0.configuration.trigger_word.id                         0x00000000
+#cyclic_generator0.configuration.trigger_word.l1a                        0x00000000
+
+#----------------------------------------
+# Cyclic generator 1: BC0 B-go.
+#----------------------------------------
+cyclic_generator1.configuration.enabled                                 0x00000001
+cyclic_generator1.configuration.initial_prescale                        0x00000000
+cyclic_generator1.configuration.pause                                   0x00000000
+cyclic_generator1.configuration.permanent                               0x00000001
+cyclic_generator1.configuration.postscale                               0x00000000
+cyclic_generator1.configuration.prescale                                0x00000000
+cyclic_generator1.configuration.repeat_cycle                            0x00000001
+cyclic_generator1.configuration.start_bx                                0x00000001
+cyclic_generator1.configuration.trigger_word.bgo_command                0x00000001
+cyclic_generator1.configuration.trigger_word.bgo_sequence_command       0x00000000
+cyclic_generator1.configuration.trigger_word.id                         0x00000001
+cyclic_generator1.configuration.trigger_word.l1a                        0x00000000
+
+
+#----------------------------------------
+# Cyclic generator 2: StartOfGap B-go.
+#----------------------------------------
+cyclic_generator2.configuration.enabled                                 0x00000000
+cyclic_generator2.configuration.initial_prescale                        0x00000000
+cyclic_generator2.configuration.pause                                   0x00000000
+cyclic_generator2.configuration.permanent                               0x00000001
+cyclic_generator2.configuration.postscale                               0x00000000
+cyclic_generator2.configuration.prescale                                0x00000000
+cyclic_generator2.configuration.repeat_cycle                            0x00000001
+cyclic_generator2.configuration.start_bx                                0x00000d76
+cyclic_generator2.configuration.init_on_bgo                             0x00000000
+cyclic_generator2.configuration.init_bgo_id                             0x00000000
+cyclic_generator2.configuration.trigger_word.bgo_command                0x00000001
+cyclic_generator2.configuration.trigger_word.bgo_sequence_command       0x00000000
+cyclic_generator2.configuration.trigger_word.id                         0x0000000b
+cyclic_generator2.configuration.trigger_word.l1a                        0x00000000
+
+#----------------------------------------
+# Cyclic generator 3: Calibration sequence.
+#----------------------------------------
+cyclic_generator3.configuration.enabled                                 0x00000000
+cyclic_generator3.configuration.initial_prescale                        0x00000000
+cyclic_generator3.configuration.pause                                   0x00000000
+cyclic_generator3.configuration.permanent                               0x00000000
+cyclic_generator3.configuration.postscale                               0x00000000
+# Prescale 0x70 = 112: rate becomes 100 Hz.
+cyclic_generator3.configuration.prescale                                0x00000070
+cyclic_generator3.configuration.repeat_cycle                            0x00000001
+cyclic_generator3.configuration.start_bx                                0x00000004
+cyclic_generator3.configuration.init_on_bgo                             0x00000000
+cyclic_generator3.configuration.init_bgo_id                             0x00000000
+cyclic_generator3.configuration.trigger_word.bgo_command                0x00000000
+cyclic_generator3.configuration.trigger_word.bgo_sequence_command       0x00000001
+cyclic_generator3.configuration.trigger_word.id                         0x00000006
+cyclic_generator3.configuration.trigger_word.l1a                        0x00000000
+
+#----------------------------------------
+# Cyclic generator 4: Periodic Resync for debugging/commissioning.
+#----------------------------------------
+cyclic_generator4.configuration.enabled                                 0x00000000
+cyclic_generator4.configuration.initial_prescale                        0x000057dc
+cyclic_generator4.configuration.pause                                   0x00000000
+cyclic_generator4.configuration.permanent                               0x00000000
+cyclic_generator4.configuration.postscale                               0x00000000
+# Prescale to about 0.5 Hz.
+cyclic_generator4.configuration.prescale                                0x000057dc
+cyclic_generator4.configuration.repeat_cycle                            0x00000001
+cyclic_generator4.configuration.start_bx                                0x00000010
+cyclic_generator4.configuration.init_on_bgo                             0x00000000
+cyclic_generator4.configuration.init_bgo_id                             0x00000000
+cyclic_generator4.configuration.trigger_word.bgo_command                0x00000000
+cyclic_generator4.configuration.trigger_word.bgo_sequence_command       0x00000001
+cyclic_generator4.configuration.trigger_word.id                         0x00000004
+cyclic_generator4.configuration.trigger_word.l1a                        0x00000000
+
+#----------------------------------------
+# Cyclic generator 5: Periodic HardReset for debugging/commissioning.
+#----------------------------------------
+cyclic_generator5.configuration.enabled                                 0x00000000
+cyclic_generator5.configuration.initial_prescale                        0x000057dc
+cyclic_generator5.configuration.pause                                   0x00000000
+cyclic_generator5.configuration.permanent                               0x00000000
+cyclic_generator5.configuration.postscale                               0x00000000
+# Prescale to about 0.5 Hz.
+cyclic_generator5.configuration.prescale                                0x000057dc
+cyclic_generator5.configuration.repeat_cycle                            0x00000001
+cyclic_generator5.configuration.start_bx                                0x00000020
+cyclic_generator5.configuration.init_on_bgo                             0x00000000
+cyclic_generator5.configuration.init_bgo_id                             0x00000000
+cyclic_generator5.configuration.trigger_word.bgo_command                0x00000000
+cyclic_generator5.configuration.trigger_word.bgo_sequence_command       0x00000001
+cyclic_generator5.configuration.trigger_word.id                         0x00000005
+cyclic_generator5.configuration.trigger_word.l1a                        0x00000000
+
+#----------------------------------------
+# Cyclic generators 6-14: off.
+#----------------------------------------
+cyclic_generator6.configuration.enabled                                 0x00000000
+cyclic_generator7.configuration.enabled                                 0x00000000
+cyclic_generator8.configuration.enabled                                 0x00000000
+cyclic_generator9.configuration.enabled                                 0x00000000
+cyclic_generator10.configuration.enabled                                0x00000000
+cyclic_generator11.configuration.enabled                                0x00000000
+cyclic_generator12.configuration.enabled                                0x00000000
+cyclic_generator13.configuration.enabled                                0x00000000
+cyclic_generator14.configuration.enabled                                0x00000000
+
+#----------------------------------------
+# Cyclic generator 15: Trigger.
+#----------------------------------------
+cyclic_generator15.configuration.enabled                                0x00000000
+cyclic_generator15.configuration.initial_prescale                       0x00000000
+cyclic_generator15.configuration.pause                                  0x00000000
+cyclic_generator15.configuration.permanent                              0x00000000
+cyclic_generator15.configuration.postscale                              0x00000000
+cyclic_generator15.configuration.prescale                               0x00000000
+cyclic_generator15.configuration.repeat_cycle                           0x00000001
+cyclic_generator15.configuration.start_bx                               0x00000010
+cyclic_generator15.configuration.trigger_word.bgo_command               0x00000000
+cyclic_generator15.configuration.trigger_word.bgo_sequence_command      0x00000000
+cyclic_generator15.configuration.trigger_word.id                        0x00000000
+cyclic_generator15.configuration.trigger_word.l1a                       0x00000001
+
+
+#----------------------------------------------------------------------
+# NOTE: Each sequence that disables/pauses triggers, _has to_
+# enable/unpause them again at the end of the sequence.
+#----------------------------------------------------------------------
+
+
+#----------------------------------------
+# Sequence 0: Start (Resync, OC0, LumiNibble, Start, EC0).
+#----------------------------------------
+# Pause the system and wait 1 orbit.
+bgo_trains.bgo_train0.ram                                               0x0001000b
+# Send B-go Resync and wait 8 orbits.
+bgo_trains.bgo_train0.ram                                               0x00080504
+# Send B-go OC0.
+bgo_trains.bgo_train0.ram                                               0x00000804
+# Send B-go LumiNibble and wait 8 orbits.
+bgo_trains.bgo_train0.ram                                               0x00080004
+# Send B-go Start and wait 1 orbit.
+bgo_trains.bgo_train0.ram                                               0x00010904
+# Send B-go EC0 and wait 1 orbit.
+bgo_trains.bgo_train0.ram                                               0x00010704
+# Unpause the system.
+bgo_trains.bgo_train0.ram                                               0x0000000c
+# End-of-sequence.
+bgo_trains.bgo_train0.ram                                               0x00000005
+
+#----------------------------------------
+# Sequence 1: Stop (Stop).
+#----------------------------------------
+# Pause the system and wait 1 orbit.
+bgo_trains.bgo_train1.ram                                               0x0001000b
+# Send B-go Stop.
+bgo_trains.bgo_train1.ram                                               0x00000a04
+# Unpause the system.
+bgo_trains.bgo_train1.ram                                               0x0000000c
+# End-of-sequence.
+bgo_trains.bgo_train1.ram                                               0x00000005
+
+#----------------------------------------
+# Sequence 2: Pause.
+#----------------------------------------
+# NOTE: Pause is a pure-software action.
+# End-of-sequence.
+bgo_trains.bgo_train2.ram                                               0x00000005
+
+#----------------------------------------
+# Sequence 3: Resume.
+#----------------------------------------
+# NOTE: Resume is a pure-software action.
+# End-of-sequence.
+bgo_trains.bgo_train3.ram                                               0x00000005
+
+#----------------------------------------
+# Sequence 4: Resync (Resync, EC0).
+#----------------------------------------
+# Pause the system and wait 64 orbits.
+bgo_trains.bgo_train4.ram                                               0x0040000b
+# Send B-go Resync and wait 64 orbits.
+bgo_trains.bgo_train4.ram                                               0x00400504
+# Send B-go EC0 and wait 1 orbit.
+bgo_trains.bgo_train4.ram                                               0x00010704
+# Unpause the system.
+bgo_trains.bgo_train4.ram                                               0x0000000c
+# End-of-sequence.
+bgo_trains.bgo_train4.ram                                               0x00000005
+
+#----------------------------------------
+# Sequence 5: HardReset (HardReset, Resync, EC0).
+#----------------------------------------
+# Pause the system and wait 255 orbits.
+bgo_trains.bgo_train5.ram                                               0x00ff000b
+# Send B-go HardReset and wait 3375 orbits (about 300 ms, for CSC).
+bgo_trains.bgo_train5.ram                                               0x0d2f0604
+# Send B-go Resync and wait 64 orbits.
+bgo_trains.bgo_train5.ram                                               0x00400504
+# Send B-go EC0 and wait 1 orbit.
+bgo_trains.bgo_train5.ram                                               0x00010704
+# Unpause the system.
+bgo_trains.bgo_train5.ram                                               0x0000000c
+# End-of-sequence.
+bgo_trains.bgo_train5.ram                                               0x00000005
+
+#----------------------------------------
+# Sequence 6: Calibration (WarningTestEnable, TestEnable, L1A).
+#----------------------------------------
+# Send B-go WarningTestEnable and wait 1 orbit.
+bgo_trains.bgo_train6.ram                                               0x00010d04
+# Arm 'calibration-trigger mode.'
+bgo_trains.bgo_train6.ram                                               0x00000009
+# Send B-go TestEnable.
+bgo_trains.bgo_train6.ram                                               0x00010204
+# Send calibration trigger.
+bgo_trains.bgo_train6.ram                                               0x00010007
+# Go back to 'normal-trigger mode.'
+bgo_trains.bgo_train6.ram                                               0x0000000a
+# End-of-sequence.
+bgo_trains.bgo_train6.ram                                               0x00000005
+
+
+
+#----------------------------------------
+# B-go firing BX settings.
+#----------------------------------------
+# LumiNibble.
+bgo_channels.bgo_channel0.firing_bx                                     0x00000100
+# BC0.
+bgo_channels.bgo_channel1.firing_bx                                     0x00000dd4
+# TestEnable.
+bgo_channels.bgo_channel2.firing_bx                                     0x00000ce0
+# PrivateGap.
+bgo_channels.bgo_channel3.firing_bx                                     0x000007d0
+# PrivateOrbit.
+bgo_channels.bgo_channel4.firing_bx                                     0x00000000
+# Resync.
+bgo_channels.bgo_channel5.firing_bx                                     0x000007d0
+# HardReset.
+bgo_channels.bgo_channel6.firing_bx                                     0x000007d0
+# EC0.
+bgo_channels.bgo_channel7.firing_bx                                     0x000007d0
+# OC0.
+bgo_channels.bgo_channel8.firing_bx                                     0x000007d0
+# Start.
+bgo_channels.bgo_channel9.firing_bx                                     0x000007d0
+# Stop.
+bgo_channels.bgo_channel10.firing_bx                                    0x000007d0
+# StartOfGap.
+bgo_channels.bgo_channel11.firing_bx                                    0x00000d70
+# B-go 12.
+bgo_channels.bgo_channel12.firing_bx                                    0x00000000
+# WarningTestEnable.
+bgo_channels.bgo_channel13.firing_bx                                    0x00000b53
+# B-go 14.
+bgo_channels.bgo_channel14.firing_bx                                    0x00000000
+# B-go 15.
+bgo_channels.bgo_channel15.firing_bx                                    0x00000000
+
+

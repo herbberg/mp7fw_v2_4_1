@@ -1,0 +1,3 @@
+src amc13_link_gtx.vhd
+src release-1.17/*.vhd
+src ../cgn/amc13_link_gtx/amc13_link_gtx.xci

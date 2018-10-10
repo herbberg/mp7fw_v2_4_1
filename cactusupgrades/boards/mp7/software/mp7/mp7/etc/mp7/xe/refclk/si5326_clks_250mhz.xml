@@ -1,0 +1,35 @@
+<!-- Created for testing bypass of Tx/Rx buffers on 10G link.  --> 
+<!-- RefClk must be same or double frequency of transceiver internal clock  --> 
+
+<clkcfg name="ext_si5326_clks_250mhz">
+    
+  <clksrc>generic</clksrc>
+
+  <si570>
+    <cfg>false</cfg>
+    <file>SI570_250MHz_Regs.txt</file>
+  </si570>
+
+  <si5326>
+    <cfgtop>true</cfgtop>
+    <cfgbot>true</cfgbot>
+    <filetop>MP7_SI5326_20150920_XAXB_to_250MHz_CKOUT1_NoIncDec_Require_CKIN1_Disabled_Regs.txt</filetop>
+    <filebot>MP7_SI5326_20150920_XAXB_to_250MHz_CKOUT1_NoIncDec_Require_CKIN1_Disabled_Regs.txt</filebot>
+  </si5326>
+
+  <si53314>
+    <basetop>true</basetop>
+    <exttop>true</exttop>
+    <basebot>true</basebot>
+    <extbot>true</extbot>
+    <clkselbot>1</clkselbot> <!--bottom fan out clk select: 0 for 570, 1 for 5326 -->
+  </si53314>
+
+  <xpoint> <!-- input options = [fpga, tclkc, tclka, fclka]-->
+    <tclkb>fpga</tclkb>
+    <fpga>fclka</fpga>
+    <clk2>fpga</clk2>
+    <clk1>fpga</clk1>
+  </xpoint>
+
+</clkcfg>

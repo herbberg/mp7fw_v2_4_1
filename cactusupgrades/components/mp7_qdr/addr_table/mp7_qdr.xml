@@ -1,0 +1,39 @@
+<node description="QDR RAM" fwinfo="endpoint;width=22">
+    <node id="ram0" address="0x000000" size="0x200000" mode="block" fwinfo="endpoint;width=21"/>
+    <node id="ram1" address="0x200000" size="0x200000" mode="block" fwinfo="endpoint;width=21"/>
+</node>
+
+<!--
+   
+   Note that the RAM transfers 72bits per transaction.
+   This has been split into 64bits plus 8bits parity
+   If the add LSB = 0 then access is to 31:00 else 63:32
+   Write/Read should occur in pairs: e.g. 
+   
+    - Write add(0)=0, then add(0)=1
+    - The write to the RAM will not take place until the 2nd word is sent.
+   
+    - Read add(0)=0, then add(0)=1
+    - The read to the RAM will occur on the 1st word request.
+     
+   If a parity error or calibration error is detected an ipbus bus err 
+   will be generated.
+   
+   The RAM itself runs from a 125MHz clock and generates all 
+   necesary extra clocks internally.  It could be changed to 120MHz
+   if the user wanted to run at 1/2 the main processor clk.
+    
+   A FIFO bridges to/from the QDR/IPBus clock domain.
+   
+   There are 2 designs: 
+   
+   qdr_test
+   --------
+   The 1st just lights up a couple of LEDs that should be green 
+   if all is well.  
+
+   qdr_ipbus
+   ---------
+   The 2nd contains the ipbus interface described above.
+     
+-->

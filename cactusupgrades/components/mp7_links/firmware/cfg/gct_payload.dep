@@ -1,0 +1,2 @@
+src --cd protocol/gct gct_payload.vhd
+src --cd protocol/gct gct_pattern_clken.vhd

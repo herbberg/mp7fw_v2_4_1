@@ -1,0 +1,12 @@
+src gth_5g/quad_wrapper_gth_5g.vhd
+src protocol/ext_align_gth_16b_5g_spartan.vhd
+src wrappers/gth_quad_wrapper_8b10bx16b_xi_5g.vhd
+
+#?toolset=="ISE"? src -g --cd xilinx_gth_16b_5g_cpll/example_design xilinx_gth_16b_5g_cpll_tx_startup_fsm.vhd xilinx_gth_16b_5g_cpll_rx_startup_fsm.vhd xilinx_gth_16b_5g_cpll_sync_block.vhd 
+#?toolset=="ISE"? src -g xilinx_gth_16b_5g_cpll.vhd xilinx_gth_16b_5g_cpll_gt.vhd
+
+?toolset=="Vivado"? src --cd ../gen_hdl/xilinx_gth_16b_5g_cpll/xilinx_gth_16b_5g_cpll/example_design xilinx_gth_16b_5g_cpll_tx_startup_fsm.vhd xilinx_gth_16b_5g_cpll_rx_startup_fsm.vhd xilinx_gth_16b_5g_cpll_sync_block.vhd 
+?toolset=="Vivado"? src --cd ../gen_hdl/xilinx_gth_16b_5g_cpll/ xilinx_gth_16b_5g_cpll.vhd xilinx_gth_16b_5g_cpll_gt.vhd
+
+#src -n ../cgn/xilinx_gth_16b_5g_cpll.xco
+src --cd protocol data_valid_check.vhd usrclk_source.vhd

@@ -1,0 +1,150 @@
+1) Read start-up frequency configuration (RFREQ, HS_DIV, and N1) from the device after power-up or register reset
+
+     Registers for the Current Configuration 
+      Register   Data
+          7       0x00
+          8       0xC2
+          9       0xD1
+         10       0xE1
+         11       0x27
+         12       0xAE
+
+      RFREQ  = 0x2D1E127AE
+             = 0x2D1E127AE / (2^28) = 45.11746948
+      HS_DIV = 0x0 = 4
+      N1     = 0x3 = 4
+
+2) Calculate the actual nominal crystal frequency where f0 is the start-up output frequency
+
+      fxtal = ( f0 x HS_DIV x N1 ) / RFREQ 
+            = (322.265625000 MHz x 4 x 4) / 45.117469482
+            = 114.285000000 MHz
+
+3) Choose the new output frequency (f1).
+      Output Frequency (f1) = 250.000000000 MHz
+
+4) Choose the output dividers for the new frequency configuration (HS_DIV and N1) by ensuring the DCO oscillation frequency (fdco) is between 4.85 GHz and 5.67 GHz where fdco = f1 x HS_DIV x N1. See the Divider Combinations tab for more options.
+
+      HS_DIV = 0x1 = 5
+      N1     = 0x3 = 4
+      fdco = f1 x HS_DIV x N1 
+           = 250.000000000 MHz x 5 x 4
+           = 5.000000000 GHz
+
+5) Calculate the new crystal frequency multiplication ratio (RFREQ) as RFREQ = fdco / fxtal
+
+      RFREQ = fdco / fxtal 
+            = 5.000000000 GHz / 114.285000000 MHz
+            = 43.75027344
+            = 43.75027344 x (2^28) = 0x2BC011EB8
+
+6) Freeze the DCO by setting Freeze DCO = 1 (bit 4 of register 137).
+
+7) Write the new frequency configuration (RFREQ, HS_DIV, and N1)
+
+     Registers for the New Configuration 
+      Register   Data
+          7       0x20
+          8       0xC2
+          9       0xBC
+         10       0x01
+         11       0x1E
+         12       0xB8
+
+8) Unfreeze the DCO by setting Freeze DCO = 0 and assert the NewFreq bit (bit 6 of register 135) within 10 ms.
+
+
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+
+Start-up Frequency Configuration (after power cycle or register reset)
+ Output Frequency = 322.265625000 MHz
+
+ RFREQ  = 0x2D1E127AE = 45.11746948
+ HS_DIV = 0x0 = 4
+ N1     = 0x3 = 4
+
+ fxtal = ( f0 x HS_DIV x N1 ) / RFREQ 
+       = (322.265625000 MHz x 4 x 4) / 45.117469482
+       = 114.285000000 MHz
+
+
+New Configuration
+ Output Frequency = 250.000000000 MHz
+
+ HS_DIV = 0x1 = 5
+ N1     = 0x3 = 4
+
+ fdco = f1 x HS_DIV x N1 
+      = 250.000000000 MHz x 5 x 4
+      = 5.000000000 GHz
+
+ RFREQ = fdco / fxtal 
+       = 5.000000000 GHz / 114.285000000 MHz
+       = 43.75027344 = 0x2BC011EB8
+
+
+Start-up Register Configuration
+  Register   7 = 0x00
+  Register   8 = 0xC2
+  Register   9 = 0xD1
+  Register  10 = 0xE1
+  Register  11 = 0x27
+  Register  12 = 0xAE
+
+New Register Configuration
+  Register   7 = 0x20
+  Register   8 = 0xC2
+  Register   9 = 0xBC
+  Register  10 = 0x01
+  Register  11 = 0x1E
+  Register  12 = 0xB8
+
+
+
+---------------------------------------------------------------------
+---------------------------------------------------------------------#
+
+
+Start-up Frequency Configuration (after power cycle or register reset)
+ Output Frequency = 322.265625000 MHz
+
+ RFREQ  = 0x2D1E127AE = 45.11746948
+ HS_DIV = 0x0 = 4
+ N1     = 0x3 = 4
+
+ fxtal = ( f0 x HS_DIV x N1 ) / RFREQ 
+       = (322.265625000 MHz x 4 x 4) / 45.117469482
+       = 114.285000000 MHz
+
+
+New Configuration
+ Output Frequency = 250.000000000 MHz
+
+ HS_DIV = 0x1 = 5
+ N1     = 0x3 = 4
+
+ fdco = f1 x HS_DIV x N1 
+      = 250.000000000 MHz x 5 x 4
+      = 5.000000000 GHz
+
+ RFREQ = fdco / fxtal 
+       = 5.000000000 GHz / 114.285000000 MHz
+       = 43.75027344 = 0x2BC011EB8
+
+
+Start-up Register Configuration
+  Register   7 = 0x00
+  Register   8 = 0xC2
+  Register   9 = 0xD1
+  Register  10 = 0xE1
+  Register  11 = 0x27
+  Register  12 = 0xAE
+
+New Register Configuration
+  Register   7 = 0x20
+  Register   8 = 0xC2
+  Register   9 = 0xBC
+  Register  10 = 0x01
+  Register  11 = 0x1E
+  Register  12 = 0xB8

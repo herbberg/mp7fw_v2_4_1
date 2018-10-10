@@ -1,0 +1,20 @@
+
+src gth_calotest/quad_wrapper_gth_calotest.vhd
+src protocol/ext_align_gth_calotest_spartan.vhd
+src wrappers/gth_quad_wrapper_calotest.vhd
+
+?toolset=="Vivado"? src ../cgn/tx_fifo_6g4_36to18/tx_fifo_6g4_36to18.xci
+
+# Bug in Xilinx transceiver.  Need hacked version.
+src --cd gth_calotest chan_gth_calotest_4g8_gt.vhd chan_gth_calotest_6g4_gt.vhd
+
+# Use VHDL from Vivado 4g8 Rx / 10g Tx core.
+?toolset=="Vivado"? src --cd ../gen_hdl/chan_gth_calotest_4g8 chan_gth_calotest_4g8.vhd chan_gth_calotest_4g8_init.vhd chan_gth_calotest_4g8_multi_gt.vhd
+?toolset=="Vivado"? src --cd ../gen_hdl/chan_gth_calotest_4g8 chan_gth_calotest_4g8_tx_startup_fsm.vhd chan_gth_calotest_4g8_rx_startup_fsm.vhd chan_gth_calotest_4g8_sync_block.vhd 
+
+# Use VHDL from Vivado 6g4 Tx / 10g Tx core.
+?toolset=="Vivado"? src --cd ../gen_hdl/chan_gth_calotest_6g4 chan_gth_calotest_6g4.vhd chan_gth_calotest_6g4_init.vhd chan_gth_calotest_6g4_multi_gt.vhd
+?toolset=="Vivado"? src --cd ../gen_hdl/chan_gth_calotest_6g4 chan_gth_calotest_6g4_tx_startup_fsm.vhd chan_gth_calotest_6g4_rx_startup_fsm.vhd chan_gth_calotest_6g4_sync_block.vhd 
+
+src --cd common gth_common.vhd gth_common_reset.vhd
+src --cd protocol data_check_8b10b.vhd usrclk_source_calo.vhd

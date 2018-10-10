@@ -1,0 +1,244 @@
+
+##################################################################################################
+## All the essential UCF constraints for the core QDR design
+##################################################################################################
+
+# No need to specify net timing because sys_slk derived from the base_fw 
+# which already has a constraint set on the 125MHz free running clock.
+
+#NET "sys_clk" TNM_NET = TNM_sys_clk;
+#TIMESPEC "TS_sys_clk" = PERIOD "TNM_sys_clk" 8 ns;
+
+#AREA_GROUP qdr_c0 RANGE=CLOCKREGION_X1Y7, CLOCKREGION_X1Y8;
+AREA_GROUP qdr_c0 RANGE=SLICE_X106Y350:SLICE_X169Y449;
+AREA_GROUP qdr_c0 RANGE=RAMB36_X7Y70:RAMB36_X10Y89;
+AREA_GROUP qdr_c0 RANGE=RAMB18_X7Y140:RAMB18_X10Y179;
+INST "*u_qdr_sram/c0_u_qdr_phy_top/*" AREA_GROUP=qdr_c0;
+INST "*u_qdr_sram/c0_u_infrastructure/*" AREA_GROUP=qdr_c0;
+
+
+#AREA_GROUP qdr_c1 RANGE=CLOCKREGION_X0Y7, CLOCKREGION_X0Y8;
+AREA_GROUP qdr_c1 RANGE=SLICE_X52Y350:SLICE_X105Y449;
+AREA_GROUP qdr_c1 RANGE=RAMB36_X4Y70:RAMB36_X6Y89;
+AREA_GROUP qdr_c1 RANGE=RAMB18_X4Y140:RAMB18_X6Y179;
+INST "*u_qdr_sram/c1_u_qdr_phy_top/*" AREA_GROUP=qdr_c1;
+INST "*u_qdr_sram/c1_u_infrastructure/*" AREA_GROUP=qdr_c1;
+
+##################################################################################################
+## Controller 0
+## Memory Device: QDRIIPLUS_SRAM->Components-BL4->CY7C25632KV18-450BZC
+##################################################################################################
+
+# Note: the following CLOCK_DEDICATED_ROUTE constraint will cause a warning in place similar
+# to the following:
+#   WARNING:Place:1402 - A clock IOB / PLL clock component pair have been found that are not
+#   placed at an optimal clock IOB / PLL site pair.
+# This warning can be ignored.  See the Users Guide for more information.
+
+PIN "*/c0_u_infrastructure/plle2_i.CLKIN1" CLOCK_DEDICATED_ROUTE = BACKBONE;
+            
+############## NET - IOSTANDARD ##################
+
+NET   "c0_qdriip_d[0]"                         LOC = "D20"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L4P_T0_37
+NET   "c0_qdriip_d[1]"                         LOC = "E22"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L6P_T0_37
+NET   "c0_qdriip_d[2]"                         LOC = "D22"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L5P_T0_37
+NET   "c0_qdriip_d[3]"                         LOC = "C20"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L4N_T0_37
+NET   "c0_qdriip_d[4]"                         LOC = "A21"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L1N_T0_37
+NET   "c0_qdriip_d[5]"                         LOC = "B21"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L1P_T0_37
+NET   "c0_qdriip_d[6]"                         LOC = "A20"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L2N_T0_37
+NET   "c0_qdriip_d[7]"                         LOC = "D21"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L5N_T0_37
+NET   "c0_qdriip_d[8]"                         LOC = "B20"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L2P_T0_37
+NET   "c0_qdriip_d[9]"                         LOC = "F20"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L8P_T1_37
+NET   "c0_qdriip_d[10]"                        LOC = "F19"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L8N_T1_37
+NET   "c0_qdriip_d[11]"                        LOC = "H20"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L12P_T1_MRCC_37
+NET   "c0_qdriip_d[12]"                        LOC = "G22"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L9N_T1_DQS_37
+NET   "c0_qdriip_d[13]"                        LOC = "H19"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L10N_T1_37
+NET   "c0_qdriip_d[14]"                        LOC = "J19"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L10P_T1_37
+NET   "c0_qdriip_d[15]"                        LOC = "H22"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L9P_T1_DQS_37
+NET   "c0_qdriip_d[16]"                        LOC = "J20"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L11N_T1_SRCC_37
+NET   "c0_qdriip_d[17]"                        LOC = "J21"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L11P_T1_SRCC_37
+NET   "c0_qdriip_q[0]"                         LOC = "E12"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L7P_T1_38
+NET   "c0_qdriip_q[1]"                         LOC = "D12"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L7N_T1_38
+NET   "c0_qdriip_q[2]"                         LOC = "F13"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L10N_T1_38
+NET   "c0_qdriip_q[3]"                         LOC = "E13"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L8N_T1_38
+NET   "c0_qdriip_q[4]"                         LOC = "G15"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L9P_T1_DQS_38
+NET   "c0_qdriip_q[5]"                         LOC = "E14"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L8P_T1_38
+NET   "c0_qdriip_q[6]"                         LOC = "F14"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L10P_T1_38
+NET   "c0_qdriip_q[7]"                         LOC = "F15"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L9N_T1_DQS_38
+NET   "c0_qdriip_q[8]"                         LOC = "H14"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L12N_T1_MRCC_38
+NET   "c0_qdriip_q[9]"                         LOC = "C14"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L1N_T0_38
+NET   "c0_qdriip_q[10]"                        LOC = "B15"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L2P_T0_38
+NET   "c0_qdriip_q[11]"                        LOC = "A15"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L2N_T0_38
+NET   "c0_qdriip_q[12]"                        LOC = "B13"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L3P_T0_DQS_38
+NET   "c0_qdriip_q[13]"                        LOC = "A13"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L4N_T0_38
+NET   "c0_qdriip_q[14]"                        LOC = "A14"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L4P_T0_38
+NET   "c0_qdriip_q[15]"                        LOC = "B12"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L3N_T0_DQS_38
+NET   "c0_qdriip_q[16]"                        LOC = "C13"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L5P_T0_38
+NET   "c0_qdriip_q[17]"                        LOC = "C12"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L5N_T0_38
+NET   "c0_qdriip_sa[19]"                       LOC = "K22"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L13P_T2_MRCC_37
+NET   "c0_qdriip_sa[18]"                       LOC = "J22"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L13N_T2_MRCC_37
+NET   "c0_qdriip_sa[17]"                       LOC = "M22"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L18N_T2_37
+NET   "c0_qdriip_sa[16]"                       LOC = "K21"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L14N_T2_SRCC_37
+NET   "c0_qdriip_sa[15]"                       LOC = "N19"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L17N_T2_37
+NET   "c0_qdriip_sa[14]"                       LOC = "N20"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L17P_T2_37
+NET   "c0_qdriip_sa[13]"                       LOC = "N22"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L18P_T2_37
+NET   "c0_qdriip_sa[12]"                       LOC = "L20"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L16N_T2_37
+NET   "c0_qdriip_sa[11]"                       LOC = "K19"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L15N_T2_DQS_37
+NET   "c0_qdriip_sa[10]"                       LOC = "L19"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L15P_T2_DQS_37
+NET   "c0_qdriip_sa[9]"                        LOC = "L21"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L14P_T2_SRCC_37
+NET   "c0_qdriip_sa[8]"                        LOC = "M20"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L16P_T2_37
+NET   "c0_qdriip_sa[7]"                        LOC = "U22"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L21P_T3_DQS_37
+NET   "c0_qdriip_sa[6]"                        LOC = "R21"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L24N_T3_37
+NET   "c0_qdriip_sa[5]"                        LOC = "P20"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L22N_T3_37
+NET   "c0_qdriip_sa[4]"                        LOC = "P22"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L23N_T3_37
+NET   "c0_qdriip_sa[3]"                        LOC = "R19"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L20N_T3_37
+NET   "c0_qdriip_sa[2]"                        LOC = "U21"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L21N_T3_DQS_37
+NET   "c0_qdriip_sa[1]"                        LOC = "T21"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L24P_T3_37
+NET   "c0_qdriip_sa[0]"                        LOC = "T19"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L20P_T3_37
+NET   "c0_qdriip_w_n"                          LOC = "P21"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L22P_T3_37
+NET   "c0_qdriip_r_n"                          LOC = "R22"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L23P_T3_37
+NET   "c0_qdriip_dll_off_n"                    LOC = "U20"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L19P_T3_37
+NET   "c0_qdriip_bw_n[0]"                      LOC = "F21"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L7N_T1_37
+NET   "c0_qdriip_bw_n[1]"                      LOC = "G21"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L7P_T1_37
+NET   "c0_qdriip_cq_p[0]"                      LOC = "H15"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L12P_T1_MRCC_38
+NET   "c0_qdriip_cq_n[0]"                      LOC = "J15"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L13P_T2_MRCC_38
+#NET   "c0_qdriip_qvld[0]"                      LOC = "C15"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L1P_T0_38
+NET   "c0_qdriip_k_p[0]"                       LOC = "C22"     |   IOSTANDARD = DIFF_HSTL_I          |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L3P_T0_DQS_37
+NET   "c0_qdriip_k_n[0]"                       LOC = "B22"     |   IOSTANDARD = DIFF_HSTL_I          |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L3N_T0_DQS_37
+
+
+INST "*/c0_u_qdr_phy_top/*/qdr_rld_phy_4lanes_1.u_qdr_rld_phy_4lanes/qdr_rld_byte_lane_B.qdr_rld_byte_lane_B/PHASER_OUT_inst.phaser_out" LOC=PHASER_OUT_PHY_X1Y29;
+INST "*/c0_u_qdr_phy_top/*/qdr_rld_phy_4lanes_1.u_qdr_rld_phy_4lanes/qdr_rld_byte_lane_A.qdr_rld_byte_lane_A/PHASER_OUT_inst.phaser_out" LOC=PHASER_OUT_PHY_X1Y28;
+INST "*/c0_u_qdr_phy_top/*/qdr_rld_phy_4lanes_1.u_qdr_rld_phy_4lanes/qdr_rld_byte_lane_D.qdr_rld_byte_lane_D/PHASER_OUT_inst.phaser_out" LOC=PHASER_OUT_PHY_X1Y31;
+INST "*/c0_u_qdr_phy_top/*/qdr_rld_phy_4lanes_1.u_qdr_rld_phy_4lanes/qdr_rld_byte_lane_C.qdr_rld_byte_lane_C/PHASER_OUT_inst.phaser_out" LOC=PHASER_OUT_PHY_X1Y30;
+
+INST "*/c0_u_qdr_phy_top/*/qdr_rld_phy_4lanes_0.u_qdr_rld_phy_4lanes/qdr_rld_byte_lane_D.qdr_rld_byte_lane_D/PHASER_IN_inst.phaser_in" LOC=PHASER_IN_PHY_X1Y35;
+INST "*/c0_u_qdr_phy_top/*/qdr_rld_phy_4lanes_0.u_qdr_rld_phy_4lanes/qdr_rld_byte_lane_C.qdr_rld_byte_lane_C/PHASER_IN_inst.phaser_in" LOC=PHASER_IN_PHY_X1Y34;
+
+INST "*/c0_u_qdr_phy_top/*/qdr_rld_phy_4lanes_1.u_qdr_rld_phy_4lanes/qdr_rld_byte_lane_B.qdr_rld_byte_lane_B/out_fifo_inst.out_fifo" LOC=OUT_FIFO_X1Y29;
+INST "*/c0_u_qdr_phy_top/*/qdr_rld_phy_4lanes_1.u_qdr_rld_phy_4lanes/qdr_rld_byte_lane_A.qdr_rld_byte_lane_A/out_fifo_inst.out_fifo" LOC=OUT_FIFO_X1Y28;
+INST "*/c0_u_qdr_phy_top/*/qdr_rld_phy_4lanes_1.u_qdr_rld_phy_4lanes/qdr_rld_byte_lane_D.qdr_rld_byte_lane_D/out_fifo_inst.out_fifo" LOC=OUT_FIFO_X1Y31;
+INST "*/c0_u_qdr_phy_top/*/qdr_rld_phy_4lanes_1.u_qdr_rld_phy_4lanes/qdr_rld_byte_lane_C.qdr_rld_byte_lane_C/out_fifo_inst.out_fifo" LOC=OUT_FIFO_X1Y30;
+
+INST "*/c0_u_qdr_phy_top/*/qdr_rld_phy_4lanes_0.u_qdr_rld_phy_4lanes/qdr_rld_byte_lane_D.qdr_rld_byte_lane_D/in_fifo_inst.in_fifo" LOC=IN_FIFO_X1Y35;
+INST "*/c0_u_qdr_phy_top/*/qdr_rld_phy_4lanes_0.u_qdr_rld_phy_4lanes/qdr_rld_byte_lane_C.qdr_rld_byte_lane_C/in_fifo_inst.in_fifo" LOC=IN_FIFO_X1Y34;
+
+INST "*/c0_u_qdr_phy_top/*/qdr_rld_phy_4lanes_1.u_qdr_rld_phy_4lanes/PHY_CONTROL_INST.phy_control_i" LOC=PHY_CONTROL_X1Y7;
+
+INST "*/c0_u_qdr_phy_top/*/qdr_rld_phy_4lanes_1.u_qdr_rld_phy_4lanes/phaser_ref_i" LOC=PHASER_REF_X1Y7;
+INST "*/c0_u_qdr_phy_top/*/qdr_rld_phy_4lanes_0.u_qdr_rld_phy_4lanes/phaser_ref_i" LOC=PHASER_REF_X1Y8;
+
+INST "*/c0_u_infrastructure/plle2_i" LOC=PLLE2_ADV_X1Y7;
+INST "*/c0_u_infrastructure/mmcm_i" LOC=MMCME2_ADV_X1Y7;
+
+
+##################################################################################################
+## Controller 1
+## Memory Device: QDRIIPLUS_SRAM->Components-BL4->CY7C25632KV18-450BZC
+##################################################################################################
+
+# Note: the following CLOCK_DEDICATED_ROUTE constraint will cause a warning in place similar
+# to the following:
+#   WARNING:Place:1402 - A clock IOB / PLL clock component pair have been found that are not
+#   placed at an optimal clock IOB / PLL site pair.
+# This warning can be ignored.  See the Users Guide for more information.
+
+PIN "*/c1_u_infrastructure/plle2_i.CLKIN1" CLOCK_DEDICATED_ROUTE = BACKBONE;
+            
+
+############## NET - IOSTANDARD ##################
+
+NET   "c1_qdriip_d[0]"                         LOC = "J25"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L12P_T1_MRCC_17
+NET   "c1_qdriip_d[1]"                         LOC = "J24"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L11P_T1_SRCC_17
+NET   "c1_qdriip_d[2]"                         LOC = "H25"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L11N_T1_SRCC_17
+NET   "c1_qdriip_d[3]"                         LOC = "G25"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L10P_T1_17
+NET   "c1_qdriip_d[4]"                         LOC = "G26"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L10N_T1_17
+NET   "c1_qdriip_d[5]"                         LOC = "F25"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L8N_T1_17
+NET   "c1_qdriip_d[6]"                         LOC = "F24"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L8P_T1_17
+NET   "c1_qdriip_d[7]"                         LOC = "H23"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L9P_T1_DQS_17
+NET   "c1_qdriip_d[8]"                         LOC = "H24"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L9N_T1_DQS_17
+NET   "c1_qdriip_d[9]"                         LOC = "A25"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L4N_T0_17
+NET   "c1_qdriip_d[10]"                        LOC = "B25"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L2N_T0_17
+NET   "c1_qdriip_d[11]"                        LOC = "C25"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L2P_T0_17
+NET   "c1_qdriip_d[12]"                        LOC = "A24"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L4P_T0_17
+NET   "c1_qdriip_d[13]"                        LOC = "D24"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L5P_T0_17
+NET   "c1_qdriip_d[14]"                        LOC = "D25"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L5N_T0_17
+NET   "c1_qdriip_d[15]"                        LOC = "A23"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L1N_T0_17
+NET   "c1_qdriip_d[16]"                        LOC = "B23"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L1P_T0_17
+NET   "c1_qdriip_d[17]"                        LOC = "E23"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L6P_T0_17
+NET   "c1_qdriip_q[0]"                         LOC = "E33"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L8N_T1_18
+NET   "c1_qdriip_q[1]"                         LOC = "F30"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L9P_T1_DQS_18
+NET   "c1_qdriip_q[2]"                         LOC = "F31"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L9N_T1_DQS_18
+NET   "c1_qdriip_q[3]"                         LOC = "F33"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L10N_T1_18
+NET   "c1_qdriip_q[4]"                         LOC = "G33"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L10P_T1_18
+NET   "c1_qdriip_q[5]"                         LOC = "G31"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L11P_T1_SRCC_18
+NET   "c1_qdriip_q[6]"                         LOC = "D32"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L7N_T1_18
+NET   "c1_qdriip_q[7]"                         LOC = "G32"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L11N_T1_SRCC_18
+NET   "c1_qdriip_q[8]"                         LOC = "E32"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L8P_T1_18
+NET   "c1_qdriip_q[9]"                         LOC = "A31"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L3N_T0_DQS_18
+NET   "c1_qdriip_q[10]"                        LOC = "B31"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L5P_T0_18
+NET   "c1_qdriip_q[11]"                        LOC = "B30"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L1N_T0_18
+NET   "c1_qdriip_q[12]"                        LOC = "A30"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L3P_T0_DQS_18
+NET   "c1_qdriip_q[13]"                        LOC = "C30"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L1P_T0_18
+NET   "c1_qdriip_q[14]"                        LOC = "C33"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L4N_T0_18
+NET   "c1_qdriip_q[15]"                        LOC = "C32"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L4P_T0_18
+NET   "c1_qdriip_q[16]"                        LOC = "B33"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L2P_T0_18
+NET   "c1_qdriip_q[17]"                        LOC = "A33"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L2N_T0_18
+NET   "c1_qdriip_sa[19]"                       LOC = "N25"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L17P_T2_17
+NET   "c1_qdriip_sa[18]"                       LOC = "K26"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L15N_T2_DQS_17
+NET   "c1_qdriip_sa[17]"                       LOC = "M25"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L17N_T2_17
+NET   "c1_qdriip_sa[16]"                       LOC = "N23"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L16P_T2_17
+NET   "c1_qdriip_sa[15]"                       LOC = "K24"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L13N_T2_MRCC_17
+NET   "c1_qdriip_sa[14]"                       LOC = "M23"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L18P_T2_17
+NET   "c1_qdriip_sa[13]"                       LOC = "T24"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L19P_T3_17
+NET   "c1_qdriip_sa[12]"                       LOC = "N24"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L16N_T2_17
+NET   "c1_qdriip_sa[11]"                       LOC = "L23"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L18N_T2_17
+NET   "c1_qdriip_sa[10]"                       LOC = "K23"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L13P_T2_MRCC_17
+NET   "c1_qdriip_sa[9]"                        LOC = "L26"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L15P_T2_DQS_17
+NET   "c1_qdriip_sa[8]"                        LOC = "L25"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L14N_T2_SRCC_17
+NET   "c1_qdriip_sa[7]"                        LOC = "L24"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L14P_T2_SRCC_17
+NET   "c1_qdriip_sa[6]"                        LOC = "R24"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L24N_T3_17
+NET   "c1_qdriip_sa[5]"                        LOC = "P25"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L20P_T3_17
+NET   "c1_qdriip_sa[4]"                        LOC = "P26"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L20N_T3_17
+NET   "c1_qdriip_sa[3]"                        LOC = "U25"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L21P_T3_DQS_17
+NET   "c1_qdriip_sa[2]"                        LOC = "U26"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L21N_T3_DQS_17
+NET   "c1_qdriip_sa[1]"                        LOC = "T26"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L22P_T3_17
+NET   "c1_qdriip_sa[0]"                        LOC = "R26"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L22N_T3_17
+NET   "c1_qdriip_w_n"                          LOC = "U23"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L23P_T3_17
+NET   "c1_qdriip_r_n"                          LOC = "T23"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L23N_T3_17
+NET   "c1_qdriip_dll_off_n"                    LOC = "R23"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L24P_T3_17
+NET   "c1_qdriip_bw_n[0]"                      LOC = "G23"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L7P_T1_17
+NET   "c1_qdriip_bw_n[1]"                      LOC = "F23"     |   IOSTANDARD = HSTL_I               |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L7N_T1_17
+NET   "c1_qdriip_cq_p[0]"                      LOC = "H30"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L12P_T1_MRCC_18
+NET   "c1_qdriip_cq_n[0]"                      LOC = "H32"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L13P_T2_MRCC_18
+#NET   "c1_qdriip_qvld[0]"                      LOC = "E31"     |   IOSTANDARD = HSTL_I_DCI           |     VCCAUX_IO = NORMAL      ; # Pad function: IO_L7P_T1_18
+NET   "c1_qdriip_k_p[0]"                       LOC = "C23"     |   IOSTANDARD = DIFF_HSTL_I          |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L3P_T0_DQS_17
+NET   "c1_qdriip_k_n[0]"                       LOC = "C24"     |   IOSTANDARD = DIFF_HSTL_I          |     VCCAUX_IO = NORMAL      |     SLEW = FAST        ; # Pad function: IO_L3N_T0_DQS_17
+
+
+INST "*/c1_u_qdr_phy_top/*/qdr_rld_phy_4lanes_1.u_qdr_rld_phy_4lanes/qdr_rld_byte_lane_B.qdr_rld_byte_lane_B/PHASER_OUT_inst.phaser_out" LOC=PHASER_OUT_PHY_X0Y29;
+INST "*/c1_u_qdr_phy_top/*/qdr_rld_phy_4lanes_1.u_qdr_rld_phy_4lanes/qdr_rld_byte_lane_A.qdr_rld_byte_lane_A/PHASER_OUT_inst.phaser_out" LOC=PHASER_OUT_PHY_X0Y28;
+INST "*/c1_u_qdr_phy_top/*/qdr_rld_phy_4lanes_1.u_qdr_rld_phy_4lanes/qdr_rld_byte_lane_D.qdr_rld_byte_lane_D/PHASER_OUT_inst.phaser_out" LOC=PHASER_OUT_PHY_X0Y31;
+INST "*/c1_u_qdr_phy_top/*/qdr_rld_phy_4lanes_1.u_qdr_rld_phy_4lanes/qdr_rld_byte_lane_C.qdr_rld_byte_lane_C/PHASER_OUT_inst.phaser_out" LOC=PHASER_OUT_PHY_X0Y30;
+
+INST "*/c1_u_qdr_phy_top/*/qdr_rld_phy_4lanes_0.u_qdr_rld_phy_4lanes/qdr_rld_byte_lane_D.qdr_rld_byte_lane_D/PHASER_IN_inst.phaser_in" LOC=PHASER_IN_PHY_X0Y35;
+INST "*/c1_u_qdr_phy_top/*/qdr_rld_phy_4lanes_0.u_qdr_rld_phy_4lanes/qdr_rld_byte_lane_C.qdr_rld_byte_lane_C/PHASER_IN_inst.phaser_in" LOC=PHASER_IN_PHY_X0Y34;
+
+INST "*/c1_u_qdr_phy_top/*/qdr_rld_phy_4lanes_1.u_qdr_rld_phy_4lanes/qdr_rld_byte_lane_B.qdr_rld_byte_lane_B/out_fifo_inst.out_fifo" LOC=OUT_FIFO_X0Y29;
+INST "*/c1_u_qdr_phy_top/*/qdr_rld_phy_4lanes_1.u_qdr_rld_phy_4lanes/qdr_rld_byte_lane_A.qdr_rld_byte_lane_A/out_fifo_inst.out_fifo" LOC=OUT_FIFO_X0Y28;
+INST "*/c1_u_qdr_phy_top/*/qdr_rld_phy_4lanes_1.u_qdr_rld_phy_4lanes/qdr_rld_byte_lane_D.qdr_rld_byte_lane_D/out_fifo_inst.out_fifo" LOC=OUT_FIFO_X0Y31;
+INST "*/c1_u_qdr_phy_top/*/qdr_rld_phy_4lanes_1.u_qdr_rld_phy_4lanes/qdr_rld_byte_lane_C.qdr_rld_byte_lane_C/out_fifo_inst.out_fifo" LOC=OUT_FIFO_X0Y30;
+
+INST "*/c1_u_qdr_phy_top/*/qdr_rld_phy_4lanes_0.u_qdr_rld_phy_4lanes/qdr_rld_byte_lane_D.qdr_rld_byte_lane_D/in_fifo_inst.in_fifo" LOC=IN_FIFO_X0Y35;
+INST "*/c1_u_qdr_phy_top/*/qdr_rld_phy_4lanes_0.u_qdr_rld_phy_4lanes/qdr_rld_byte_lane_C.qdr_rld_byte_lane_C/in_fifo_inst.in_fifo" LOC=IN_FIFO_X0Y34;
+
+INST "*/c1_u_qdr_phy_top/*/qdr_rld_phy_4lanes_1.u_qdr_rld_phy_4lanes/PHY_CONTROL_INST.phy_control_i" LOC=PHY_CONTROL_X0Y7;
+
+INST "*/c1_u_qdr_phy_top/*/qdr_rld_phy_4lanes_1.u_qdr_rld_phy_4lanes/phaser_ref_i" LOC=PHASER_REF_X0Y7;
+INST "*/c1_u_qdr_phy_top/*/qdr_rld_phy_4lanes_0.u_qdr_rld_phy_4lanes/phaser_ref_i" LOC=PHASER_REF_X0Y8;
+
+INST "*/c1_u_infrastructure/plle2_i" LOC=PLLE2_ADV_X0Y7;
+INST "*/c1_u_infrastructure/mmcm_i" LOC=MMCME2_ADV_X0Y7;
+
+
+

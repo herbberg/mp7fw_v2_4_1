@@ -1,0 +1,2 @@
+include mp7_formatter_s1proto.dep mp7_formatter_tdrproto.dep mp7_formatter_demuxproto.dep  mp7_formatter_multi_pkt.dep
+addrtab mp7_formatter.xml

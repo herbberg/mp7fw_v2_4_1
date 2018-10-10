@@ -1,0 +1,7 @@
+<ttccfg name="internal">
+    <clksrc>internal</clksrc>
+
+    <enable>false</enable>
+    <generateBC0>true</generateBC0>
+    <phase>0</phase>
+</ttccfg>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--> 
+  Tunnels:
+    20304 - B14
+    20305 - P5 
+    20306
+</-->
+<connections>
+  
+  <connection id="XE_9E"             uri="ipbusudp-2.0://192.168.2.104:50001" address_table="file://${MP7_ETC}/mp7/addrtab/xe_havoc5/mp7xe_infra.xml" />
+  <connection id="XE_AC"             uri="ipbusudp-2.0://192.168.2.118:50001" address_table="file://${MP7_ETC}/mp7/addrtab/xe_v2_4_0/mp7xe_infra.xml" />
+  <connection id="XE_B8"             uri="ipbusudp-2.0://192.168.2.130:50001" address_table="file://${MP7_ETC}/mp7/addrtab/xe_v2_4_0/mp7xe_infra.xml" />
+
+  <connection id="SIM"               uri="ipbusudp-2.0://192.168.201.2:50001" address_table="file://${MP7_TESTS}/etc/mp7/addrtab/sim_v2_4_0/mp7_infra.xml" />
+
+  <!-- Demux @ P5 -->
+  <connection id="XE_9E_B14_TUN"    uri="chtcp-2.0://localhost:20304?target=192.168.0.104:50001" address_table="file://${MP7_ETC}/mp7/addrtab/xe_v2_4_0/mp7xe_infra.xml" />
+  <connection id="XE_9F_B14_TUN"    uri="chtcp-2.0://localhost:20304?target=192.168.0.105:50001" address_table="file://${MP7_ETC}/mp7/addrtab/xe_v2_4_0/mp7xe_infra.xml" />
+  <connection id="XE_A9_B14_TUN"    uri="chtcp-2.0://localhost:20304?target=192.168.0.115:50001" address_table="file://${MP7_ETC}/mp7/addrtab/xe_v2_4_0/mp7xe_infra.xml" />
+  <connection id="XE_96_B14_TUN"    uri="chtcp-2.0://localhost:20304?target=192.168.0.96:50001"  address_table="file://${MP7_ETC}/mp7/addrtab/xe_v2_4_0/mp7xe_infra.xml" />
+  <connection id="XE_AE_B14_TUN"    uri="chtcp-2.0://localhost:20304?target=192.168.0.120:50001" address_table="file://${MP7_ETC}/mp7/addrtab/xe_v2_4_0/mp7xe_infra.xml" />
+  <connection id="XE_AC_B14_TUN"    uri="chtcp-2.0://localhost:20304?target=192.168.0.118:50001" address_table="file://${MP7_ETC}/mp7/addrtab/xe_v2_4_0/mp7xe_infra.xml" />
+
+  <connection id="DAQTEST"          uri="chtcp-2.0://localhost:20304?target=192.168.0.118:50001" address_table="file://${MP7_TESTS}/etc/mp7/addrtab/xe_v1_9_0_b6/mp7xe_infra.xml" />
+
+  <connection id="S2_B9_TUN"        uri="chtcp-2.0://localhost:55555?target=10.176.129.12:50001" address_table="file://${MP7_ETC}/mp7/addrtab/xe_v2_4_0/mp7xe_infra.xml" />
+  <connection id="S2_BB_TUN"        uri="chtcp-2.0://localhost:55555?target=10.176.129.17:50001" address_table="file://${MP7_ETC}/mp7/addrtab/xe_v2_4_0/mp7xe_infra.xml" />
+
+  <!-- <connection id="S2_B9_P5"        uri="chtcp-2.0://bridge-calo2:10203?target=amc-s2d11-43-01:50001" address_table="file://${MP7_ETC}/mp7/addrtab/xe_v2_4_0/mp7xe_infra.xml" /> -->
+  <connection id="S2_BB_P5"        uri="chtcp-2.0://bridge-calol2:10203?target=amc-s2d11-43-06:50001" address_table="file://${MP7_ETC}/mp7/addrtab/xe_v2_4_0/mp7xe_infra.xml" />
+  <connection id="S2_B9_P5"        uri="chtcp-2.0://bridge-calol2:10203?target=amc-s2d11-43-01:50001" address_table="file://${MP7_ETC}/mp7/addrtab/xe_v2_4_0/mp7xe_infra.xml" />
+
+</connections>

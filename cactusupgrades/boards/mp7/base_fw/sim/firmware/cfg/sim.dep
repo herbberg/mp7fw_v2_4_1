@@ -1,0 +1,18 @@
+@device_family = "virtex7"
+@device_name = "xc7vx690t"
+@device_package = "ffg1927"
+@device_speed = "-2"
+@device_top = "top"
+
+setup lib_mappings.tcl
+src top.vhd mp7_brd_decl.vhd
+src -c components/ipbus_core ipbus_package.vhd
+src -c components/mp7_datapath mp7_data_types.vhd
+src -c components/mp7_readout mp7_readout_decl.vhd
+src -c components/mp7_ttc mp7_ttc_decl.vhd
+include -c components/mp7_infra mp7_infra_sim.dep
+src -c components/ipbus_eth ../sim/eth_mac_sim.vhd
+include -c components/mp7_ctrl
+include -c components/mp7_ttc mp7_ttc_sim.dep
+include -c components/mp7_datapath mp7_datapath_sim.dep
+include -c components/mp7_readout mp7_readout_sim.dep

@@ -1,0 +1,20 @@
+@device_family = "virtex7"
+@device_name = "xc7vx690t"
+@device_package = "ffg1927"
+@device_speed = "-2"
+@boardname = "mp7xe_690" 
+
+setup -c boards/mp7/base_fw/common settings_v7.vivado.tcl
+include -c boards/mp7/base_fw/common constraints_xe.dep
+
+src mp7xe_690.vhd mp7_brd_decl.vhd
+src -c components/ipbus_core ipbus_package.vhd
+src -c components/mp7_datapath mp7_data_types.vhd
+src -c components/mp7_readout mp7_readout_decl.vhd
+include -c components/mp7_infra mp7xe_infra.dep
+include -c components/ipbus_eth v7_690es.dep
+include -c components/mp7_ctrl mp7_ctrl.dep
+include -c components/mp7_ttc
+include -c components/mp7_datapath mp7_datapath_gth.dep
+include -c components/mp7_mezzanine
+include -c components/mp7_readout

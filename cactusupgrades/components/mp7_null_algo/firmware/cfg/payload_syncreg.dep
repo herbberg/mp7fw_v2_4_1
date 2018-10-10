@@ -1,0 +1,4 @@
+src payload_syncreg.vhd
+include -c components/ipbus_slaves syncreg_v.dep
+src -c components/ipbus_slaves ipbus_reg_types.vhd
+src -c components/ipbus_core ipbus_package.vhd

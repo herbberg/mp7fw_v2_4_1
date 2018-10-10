@@ -1,0 +1,5 @@
+src gth_10g/quad_wrapper_gth.vhd
+src protocol/ext_align_gth_32b_10g_spartan.vhd
+src wrappers/gth_quad_wrapper_8b10bx32b_sim.vhd
+src wrappers/gtx_quad_wrapper_8b10bx32b_sim.vhd
+src wrappers/gth_quad_wrapper_8b10bx32b_xi_10g_low_lat_sim.vhd

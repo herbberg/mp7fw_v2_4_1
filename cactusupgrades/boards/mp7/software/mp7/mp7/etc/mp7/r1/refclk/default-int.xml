@@ -1,0 +1,15 @@
+<clkcfg name="default-int">
+  
+  <clksrc>internal</clksrc>
+  
+  <si5326>
+    <cfg>false</cfg>
+    <file></file>
+  </si5326>
+  
+  <xpoint> 
+    <clk40sel>si5326</clk40sel> <!-- input opt = [si5326, tclkc, tclka, fclka]. Both outputs must be same-->
+    <refclksel>osc</refclksel> <!-- input opt = [osc, clkcln] internal oscillator(1) or clock cleaner(3)-->
+  </xpoint>
+
+</clkcfg>

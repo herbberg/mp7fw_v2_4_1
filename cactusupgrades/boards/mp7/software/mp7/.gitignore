@@ -1,0 +1,8 @@
+nbproject
+**/bin
+**/obj
+**/lib
+**/build
+**/rpm
+*.pyc
+

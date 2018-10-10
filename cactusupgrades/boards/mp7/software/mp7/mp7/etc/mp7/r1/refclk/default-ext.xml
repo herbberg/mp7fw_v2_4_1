@@ -1,0 +1,15 @@
+<clkcfg name="default-ext">
+  
+  <clksrc>external</clksrc>
+  
+  <si5326>
+    <cfg>true</cfg>
+    <file>MP7_SI5326_20130606_40.1MHz_CKIN1_to_160.4MHz_CKOUT1_NoIncDec_Regs.txt</file>
+  </si5326>
+  
+  <xpoint> 
+    <clk40sel>fclka</clk40sel> <!-- input opt = [si5326, tclkc, tclka, fclka]. Both outputs must be same-->
+    <refclksel>osc</refclksel> <!-- input opt = [osc, clkcln] internal oscillator(1) or clock cleaner(3)-->
+  </xpoint>
+
+</clkcfg>

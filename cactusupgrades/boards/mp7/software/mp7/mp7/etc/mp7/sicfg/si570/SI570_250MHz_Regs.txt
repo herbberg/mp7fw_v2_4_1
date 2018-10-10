@@ -1,0 +1,14 @@
+# Register file for 250MHz operation
+# Created on: 26/5/2014 by Greg Iles
+# Part type: 570SAB000476DG
+# The last register (i.e 135) must be programmed within 
+# 10ms of the penultimate register (i.e. 137)
+137,10h
+  7,20h
+  8,c2h
+  9,bch
+ 10,01h
+ 11,1eh
+ 12,b8h
+137,00h
+135,40h

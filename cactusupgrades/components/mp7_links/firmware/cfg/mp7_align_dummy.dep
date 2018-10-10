@@ -1,0 +1,4 @@
+src align/mp7_align_dummy.vhd
+addrtab mp7_align.xml
+src -c components/ipbus_core ipbus_package.vhd
+

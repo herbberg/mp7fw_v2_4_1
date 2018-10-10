@@ -1,0 +1,12 @@
+src align/mp7_align.vhd
+addrtab mp7_align.xml
+src -c components/ipbus_slaves ipbus_ctrlreg_v.vhd
+src --cd packages package_links.vhd package_utilities.vhd package_types.vhd
+src --cd crc/ultimate/rtl/vhdl ucrc_pkg.vhd ucrc_par.vhd
+src --cd checksum crc_tx.vhd  new_crc32.vhd  pck_crc32_d32.vhd
+src --cd crc/fletcher64 fletcher64.vhd  mod_adder_dsp.vhd
+
+src crc/outputlogic/outputlogic_32b_crc.vhd
+src -c components/ipbus_slaves ipbus_reg_types.vhd
+src -c components/ipbus_core ipbus_package.vhd
+

@@ -1,0 +1,53 @@
+# The data value sent upon reception of a BC0 B-go. Upon reception of
+# a broadcast B-command with this data payload the internal bunch-
+# crossing counter is set to the expected BX value.
+ttcspy.logging_control.bc0_val              0x00000001
+
+# The bunch-crossing value in which to expect the arrival of the BC0.
+# If a broadcast B-command is received with the above data value,
+# that BX is assumed to be the 'expected BC0 BX.'
+ttcspy.logging_control.expected_bc0_bx      0x00000dd4
+
+# The logging mode:
+#   0 -> LogOnly,
+#   1 -> LogAllExcept.
+ttcspy.logging_control.logging_mode         0x00000001
+
+# The trigger-term combination operator:
+#   0 -> OR,
+#   1 -> AND.
+ttcspy.logging_control.trigger_combination_operator 0x00000000
+
+#----------
+# The different trigger terms.
+#----------
+
+# Several boolean flags: 0 -> trigger, 1 -> ignore.
+# - Trigger on L1As.
+ttcspy.trigger_mask.l1a                     0x00000000
+
+# - Trigger on addressed B-commands.
+ttcspy.trigger_mask.add_all                 0x00000000
+
+# - Trigger on broadcast B-commands.
+ttcspy.trigger_mask.brc_all                 0x00000000
+
+# - Trigger on broadcast commands with the bunch-counter-reset bit (bit 0) set.
+ttcspy.trigger_mask.brc_bc0                 0x00000001
+
+# - Trigger on broadcast commands with the event-counter-reset bit (bit 1) set.
+ttcspy.trigger_mask.brc_ec0                 0x00000000
+
+# - Trigger on broadcast B-commands with the specified value in the four user-data bits (bits [5:2]).
+ttcspy.trigger_mask.brc_dddd                0x00000000
+
+# - Trigger on broadcast B-commands non-zero user-data bits (bits [5:2]).
+ttcspy.trigger_mask.brc_dddd_all            0x00000000
+
+# - Trigger on broadcast B-commands with the specified value in the two test-data bits (bits [7:6]).
+ttcspy.trigger_mask.brc_tt                  0x00000000
+
+# - Trigger on broadcast B-commands non-zero test-data bits (bits [7:6]).
+ttcspy.trigger_mask.brc_tt_all              0x00000000
+
+ttcspy.trigger_mask.err_com                 0x00000000

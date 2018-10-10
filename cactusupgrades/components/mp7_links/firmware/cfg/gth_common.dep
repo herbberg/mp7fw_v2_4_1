@@ -1,0 +1,21 @@
+include mp7_links_addrtab.dep
+src -c components/mp7_ttc freq_ctr_div.vhd
+
+?toolset=="ISE"? src ../cgn/virtex7_rx_buf.xco
+?toolset=="Vivado"? src ../cgn/virtex7_rx_buf/virtex7_rx_buf.xci
+?toolset=="Modelsim"? src ../cgn/virtex7_rx_buf/virtex7_rx_buf.xci
+#?toolset=="Modelsim"? src ../gen_hdl/virtex7_rx_buf/virtex7_rx_buf.vhd
+
+src --cd packages package_links.vhd package_types.vhd package_utilities.vhd
+src crc/outputlogic/outputlogic_32b_crc.vhd
+src --cd crc/ultimate/rtl/vhdl ucrc_pkg.vhd ucrc_par.vhd
+src --cd checksum crc_tx.vhd  new_crc32.vhd  pck_crc32_d32.vhd
+src --cd crc/fletcher64 fletcher64.vhd mod_adder_dsp.vhd
+
+src crc/gct/gct_crc.vhd
+src --cd crc/gct gct_crc.vhd
+src --cd crc/fletcher64 fletcher64.vhd mod_adder_dsp.vhd
+include -c components/ipbus_slaves syncreg_v.dep
+src -c components/mp7_datapath mp7_data_types.vhd
+src -c components/ipbus_slaves drp_decl.vhd ipbus_reg_types.vhd
+src -c components/ipbus_core ipbus_package.vhd

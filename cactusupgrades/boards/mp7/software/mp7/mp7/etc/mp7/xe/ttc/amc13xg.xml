@@ -1,0 +1,7 @@
+<ttccfg name="amc13xg">
+    <clksrc>external</clksrc>
+
+    <enable>true</enable>
+    <generateBC0>false</generateBC0>
+    <phase>0</phase>
+</ttccfg>

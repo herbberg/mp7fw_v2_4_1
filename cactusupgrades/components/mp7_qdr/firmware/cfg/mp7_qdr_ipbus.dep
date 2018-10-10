@@ -1,0 +1,7 @@
+# Dependencies for QDR
+src --cd qdr_user qdr_ipbus.vhd ipbus_to_qdr_bridge.vhd qdr_to_ipbus_bridge.vhd 
+src --cd ../ucf qdr_core.ucf qdr_ipbus.ucf
+src ../cgn/qdr_to_ipbus_v9_3.xco
+src ../cgn/ipbus_to_qdr_v9_3.xco
+src qdr_core/*
+

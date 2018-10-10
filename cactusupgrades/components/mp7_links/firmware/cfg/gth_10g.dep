@@ -1,0 +1,18 @@
+# This dep file is called gth_10g, but the name isn't really appropriate.   
+# It really refers to all 10g link designs that follow the standard 
+# protocol in the CMS Trigger.  A better name might be "trig_10g"
+
+# The protocol part
+src gth_10g/quad_wrapper_gth.vhd
+src protocol/ext_align_gth_32b_10g_spartan.vhd
+
+# Transceiver type: "gth_10g_std_lat" & "gtx_10g_std_lat"
+src ../ngc/gth_quad_wrapper_8b10bx32b/10g_125mhz/gth_quad_wrapper_8b10bx32b.ngc
+src ../ngc/gtx_quad_wrapper_8b10bx32b/10g_125mhz/gtx_quad_wrapper_8b10bx32b.ngc
+
+# Additional ucf file to create timing false paths for 10g_std_lat tranceivers 
+src ../ucf/mp7_links.tcl
+
+# Transceiver type: "gth_10g"
+src wrappers/gth_quad_wrapper_8b10bx32b_xi_10g_low_lat.vhd
+src ../gen_hdl/xilinx_gth_32b_10g_qpll_low_lat/*.vhd

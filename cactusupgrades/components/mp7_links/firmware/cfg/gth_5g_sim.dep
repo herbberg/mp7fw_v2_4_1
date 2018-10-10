@@ -1,0 +1,7 @@
+src gth_5g/quad_wrapper_gth_5g.vhd
+src protocol/ext_align_gth_16b_5g_spartan.vhd
+src wrappers/gth_quad_wrapper_8b10bx16b_xi_5g_sim.vhd
+src wrappers/gth_quad_wrapper_8b10bx16b_sim.vhd
+
+
+

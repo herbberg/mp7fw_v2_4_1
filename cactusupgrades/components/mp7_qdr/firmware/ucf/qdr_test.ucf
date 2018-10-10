@@ -1,0 +1,17 @@
+
+##################################################################################################
+## UCF constraints for when running the QDR by itself in the xilinx test mode.  
+## Also requires qdr_core.ucf & top.ucf
+##################################################################################################
+
+NET "sys_clk" TNM_NET = TNM_sys_clk;
+TIMESPEC "TS_sys_clk" = PERIOD "TNM_sys_clk" 8 ns;
+            
+# Note: the following CLOCK_DEDICATED_ROUTE constraint will cause a warning in place similar
+# to the following:
+#   WARNING:Place:1402 - A clock IOB / PLL clock component pair have been found that are not
+#   placed at an optimal clock IOB / PLL site pair.
+# This warning can be ignored.  See the Users Guide for more information.
+
+NET "sys_clk_p" CLOCK_DEDICATED_ROUTE = BACKBONE;
+

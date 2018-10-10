@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connections>
+    <connection id="XE_A5"   uri="chtcp-2.0://ctrl-s2d10-29-01:10203?target=amc-s2d11-29-01:50001" address_table="file://${MP7_TESTS}/etc//mp7/addrtab/xe_v1_7_4/mp7xe_infra.xml" />
+    <connection id="XE_95"   uri="chtcp-2.0://ctrl-s2d10-29-01:10203?target=amc-s2d11-29-02:50001" address_table="file://${MP7_TESTS}/etc//mp7/addrtab/xe_v1_7_4/mp7xe_infra.xml" />
+    <connection id="XE_A3"   uri="chtcp-2.0://ctrl-s2d10-29-01:10203?target=amc-s2d11-29-03:50001" address_table="file://${MP7_TESTS}/etc//mp7/addrtab/xe_v1_7_4/mp7xe_infra.xml" />
+    <connection id="XE_A6"   uri="chtcp-2.0://ctrl-s2d10-29-01:10203?target=amc-s2d11-29-04:50001" address_table="file://${MP7_TESTS}/etc//mp7/addrtab/xe_v1_7_4/mp7xe_infra.xml" />
+    <connection id="XE_9C"   uri="chtcp-2.0://ctrl-s2d10-29-01:10203?target=amc-s2d11-29-05:50001" address_table="file://${MP7_TESTS}/etc//mp7/addrtab/xe_v1_7_4/mp7xe_infra.xml" />
+    <connection id="XE_A2"   uri="chtcp-2.0://ctrl-s2d10-29-01:10203?target=amc-s2d11-29-06:50001" address_table="file://${MP7_TESTS}/etc//mp7/addrtab/xe_v1_7_4/mp7xe_infra.xml" />
+    <connection id="XE_9D"   uri="chtcp-2.0://ctrl-s2d10-29-01:10203?target=amc-s2d11-29-07:50001" address_table="file://${MP7_TESTS}/etc//mp7/addrtab/xe_v1_7_4/mp7xe_infra.xml" />
+    <connection id="XE_98"   uri="chtcp-2.0://ctrl-s2d10-29-01:10203?target=amc-s2d11-29-08:50001" address_table="file://${MP7_TESTS}/etc//mp7/addrtab/xe_v1_7_4/mp7xe_infra.xml" />
+    <connection id="XE_A7"   uri="chtcp-2.0://ctrl-s2d10-29-01:10203?target=amc-s2d11-29-09:50001" address_table="file://${MP7_TESTS}/etc//mp7/addrtab/xe_v1_7_4/mp7xe_infra.xml" />
+    <connection id="XE_AB"   uri="chtcp-2.0://ctrl-s2d10-29-01:10203?target=amc-s2d11-29-10:50001" address_table="file://${MP7_TESTS}/etc//mp7/addrtab/xe_v1_7_4/mp7xe_infra.xml" />
+    <connection id="XE_AD"   uri="chtcp-2.0://ctrl-s2d10-29-01:10203?target=amc-s2d11-29-11:50001" address_table="file://${MP7_TESTS}/etc//mp7/addrtab/xe_v1_7_4/mp7xe_infra.xml" />
+    <connection id="XE_B5"   uri="chtcp-2.0://ctrl-s2d10-29-01:10203?target=amc-s2d11-29-12:50001" address_table="file://${MP7_TESTS}/etc//mp7/addrtab/xe_v1_7_4/mp7xe_infra.xml" />
+    
+</connections>
+

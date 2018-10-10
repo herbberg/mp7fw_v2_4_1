@@ -1,0 +1,7 @@
+src gth_10g/quad_wrapper_gth_dummy.vhd
+include mp7_links_addrtab.dep
+include -c components/ipbus_slaves syncreg_v.dep
+src -c components/mp7_datapath mp7_data_types.vhd
+src -c components/ipbus_slaves drp_decl.vhd ipbus_reg_types.vhd
+src -c components/ipbus_core ipbus_package.vhd
+

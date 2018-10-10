@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connections>
+    <connection id="MP0"   uri="chtcp-2.0://ctrl-calol2:10203?target=amc-s2d11-29-01:50001" address_table="file://${MP7_ETC}/mp7/addrtab/xe_v2_2_1/mp7xe_infra.xml" />
+    <connection id="MP1"   uri="chtcp-2.0://ctrl-calol2:10203?target=amc-s2d11-29-02:50001" address_table="file://${MP7_ETC}/mp7/addrtab/xe_v2_2_1/mp7xe_infra.xml" />
+    <connection id="MP2"   uri="chtcp-2.0://ctrl-calol2:10203?target=amc-s2d11-29-03:50001" address_table="file://${MP7_ETC}/mp7/addrtab/xe_v2_2_1/mp7xe_infra.xml" />
+    <connection id="MP3"   uri="chtcp-2.0://ctrl-calol2:10203?target=amc-s2d11-29-04:50001" address_table="file://${MP7_ETC}/mp7/addrtab/xe_v2_2_1/mp7xe_infra.xml" />
+    <connection id="MP4"   uri="chtcp-2.0://ctrl-calol2:10203?target=amc-s2d11-29-05:50001" address_table="file://${MP7_ETC}/mp7/addrtab/xe_v2_2_1/mp7xe_infra.xml" />
+    <connection id="MP5"   uri="chtcp-2.0://ctrl-calol2:10203?target=amc-s2d11-29-06:50001" address_table="file://${MP7_ETC}/mp7/addrtab/xe_v2_2_1/mp7xe_infra.xml" />
+    <connection id="MP6"   uri="chtcp-2.0://ctrl-calol2:10203?target=amc-s2d11-29-07:50001" address_table="file://${MP7_ETC}/mp7/addrtab/xe_v2_2_1/mp7xe_infra.xml" />
+    <connection id="MP7"   uri="chtcp-2.0://ctrl-calol2:10203?target=amc-s2d11-29-08:50001" address_table="file://${MP7_ETC}/mp7/addrtab/xe_v2_2_1/mp7xe_infra.xml" />
+    <connection id="MP8"   uri="chtcp-2.0://ctrl-calol2:10203?target=amc-s2d11-29-09:50001" address_table="file://${MP7_ETC}/mp7/addrtab/xe_v2_2_1/mp7xe_infra.xml" />
+    <connection id="AMC13.T1"   uri="chtcp-2.0://ctrl-calol2:10203?target=amc-s2d11-29-13-t1:50001" address_table="file:///opt/cactus/etc/amc13/AMC13XG_T1.xml" />    
+    <connection id="AMC13.T2"   uri="chtcp-2.0://ctrl-calol2:10203?target=amc-s2d11-29-13-t2:50001" address_table="file:///opt/cactus/etc/amc13/AMC13XG_T2.xml" />    
+    <!-- Demux  -->
+    <connection id="DEMUX"   uri="chtcp-2.0://ctrl-calol2:10203?target=amc-s2d11-29-12:50001" address_table="file://${MP7_ETC}/mp7/addrtab/xe_v2_2_1/mp7xe_infra.xml" />    
+</connections>
+

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<connections>
+  <connection id="T1" uri="ipbusudp-2.0://192.168.200.163:50001" address_table="file:///data/pff62257/daqtest/amc13/amc13/etc/amc13/AMC13XG_T1.xml" />
+  <connection id="T2" uri="ipbusudp-2.0://192.168.200.162:50001" address_table="file:///data/pff62257/daqtest/amc13/amc13/etc/amc13/AMC13XG_T2.xml" />
+  <connection id="MP7XE_slot10" uri="ipbusudp-2.0://192.168.2.106:50001" address_table="file://addrtab/fball_20150301/mp7xe_infra.xml" />
+</connections>

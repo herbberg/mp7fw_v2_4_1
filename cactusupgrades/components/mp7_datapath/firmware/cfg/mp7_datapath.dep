@@ -1,0 +1,28 @@
+src mp7_datapath.vhd
+src ipbus_decode_mp7_datapath.vhd
+addrtab -t mp7_datapath.xml
+addrtab region_info.xml
+src region_info.vhd
+src -c components/ipbus_core ipbus_fabric_sel.vhd ipbus_dc_fabric_sel.vhd ipbus_dc_node.vhd
+src -c components/mp7_ttc freq_ctr_div.vhd
+src mp7_region.vhd
+src ipbus_decode_mp7_region.vhd
+addrtab -t mp7_region.xml
+src align_mon.vhd
+addrtab align_mon.xml
+src -c components/ipbus_util del_array.vhd
+src -c components/mp7_ttc bunch_ctr.vhd
+src -c components/mp7_links common/drp_mux.vhd
+src mp7_chan_buffer.vhd mp7_derand.vhd mp7_daqmux.vhd
+src -c components/ipbus_util del_array.vhd
+src -c components/ipbus_slaves ipbus_drp_bridge.vhd
+src -c components/ipbus_slaves drp_decl.vhd
+src ipbus_decode_mp7_chan_buffer.vhd
+addrtab -t mp7_chan_buffer.xml
+include -c components/mp7_formatter
+src -c components/ipbus_slaves ipbus_reg_v.vhd ipbus_ctrlreg_v.vhd ipbus_ported_dpram36.vhd
+src -c components/mp7_ttc mp7_ttc_decl.vhd
+src -c components/mp7_readout mp7_readout_decl.vhd
+src mp7_data_types.vhd
+src -c components/ipbus_slaves ipbus_reg_types.vhd
+src -c components/ipbus_core ipbus_package.vhd

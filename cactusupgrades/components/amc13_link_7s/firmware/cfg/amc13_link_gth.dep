@@ -1,0 +1,3 @@
+src amc13_link_gth.vhd
+src release-1.17/*.vhd
+src ../cgn/amc13_link_gth/amc13_link_gth.xci

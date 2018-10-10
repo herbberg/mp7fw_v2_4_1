@@ -1,0 +1,198 @@
+# TCDS Configuration File for MP7 Global Running
+
+# Disable exclusive triggers/B-gos from the CPM.
+main.inselect.exclusive_cpm_bgo_enable                            0x00000000
+main.inselect.exclusive_cpm_trigger_enable                        0x00000000
+
+# Enable SOAP & IPbus-triggered triggers/B-gos.
+main.inselect.combined_software_bgo_enable                        0x00000001
+main.inselect.combined_software_trigger_enable                    0x00000001
+
+# Enable cyclic-generator triggers/B-gos.
+main.inselect.combined_cyclic_bgo_enable                          0x00000001
+main.inselect.combined_cyclic_trigger_enable                      0x00000001
+
+# Disable triggers via the B-channel.
+main.inselect.combined_bchannel_trigger_enable                    0x00000000
+
+# Orbit source selection
+main.inselect.cpm_orbit_select                                    0x00000000
+main.inselect.lpm_orbit_select                                    0x00000000
+main.inselect.lemo_orbit_select                                   0x00000000
+
+# B-channel 1: B-go 1 -> BC0
+bchannels.bchannel1.configuration.single                          0x00000001
+bchannels.bchannel1.configuration.double                          0x00000000
+bchannels.bchannel1.configuration.bx_or_delay                     0x00000000
+bchannels.bchannel1.configuration.bx_sync                         0x00000000
+bchannels.bchannel1.configuration.postscale                       0x00000000
+bchannels.bchannel1.configuration.initial_prescale                0x00000000
+bchannels.bchannel1.configuration.prescale                        0x00000000
+bchannels.bchannel1.configuration.repeat_cycle                    0x00000001
+
+# B-channel RAM contents:
+# - Data word: 0x1, control word 0x0: broadcast B-channel
+#   command.
+bchannels.bchannel1.ram                                           0x00000001 0x00000000
+# - End-of-sequence flag set to mark end of B-channel RAM
+#   contents. No-transmit flag set to avoid spurious
+#   emissions. (Data word does matter.)
+
+bchannels.bchannel1.ram                                           0x00000000 0x00000006
+
+
+# B-channel 5: B-go 5 -> Resynch
+bchannels.bchannel5.configuration.single                          0x00000001
+bchannels.bchannel5.configuration.double                          0x00000000
+bchannels.bchannel5.configuration.bx_or_delay                     0x00000000
+bchannels.bchannel5.configuration.bx_sync                         0x00000000
+bchannels.bchannel5.configuration.postscale                       0x00000000
+bchannels.bchannel5.configuration.initial_prescale                0x00000000
+bchannels.bchannel5.configuration.prescale                        0x00000000
+bchannels.bchannel5.configuration.repeat_cycle                    0x00000001
+
+# B-channel RAM contents:
+# - Data word: 0x4, control word 0x0: broadcast B-channel
+#   command.
+bchannels.bchannel5.ram                                           0x00000004 0x00000000
+# - End-of-sequence flag set to mark end of B-channel RAM
+#   contents. No-transmit flag set to avoid spurious
+#   emissions. (Data word does matter.)
+
+bchannels.bchannel5.ram                                           0x00000000 0x00000006
+
+
+
+# B-channel 7: B-go 7 -> EC0
+bchannels.bchannel7.configuration.single                          0x00000001
+bchannels.bchannel7.configuration.double                          0x00000000
+bchannels.bchannel7.configuration.bx_or_delay                     0x00000000
+bchannels.bchannel7.configuration.bx_sync                         0x00000000
+bchannels.bchannel7.configuration.postscale                       0x00000000
+bchannels.bchannel7.configuration.initial_prescale                0x00000000
+bchannels.bchannel7.configuration.prescale                        0x00000000
+bchannels.bchannel7.configuration.repeat_cycle                    0x00000001
+
+# B-channel RAM contents:
+# - Data word: 0x2, control word 0x0: broadcast B-channel
+#   command.
+bchannels.bchannel7.ram                                           0x00000002 0x00000000
+# - End-of-sequence flag set to mark end of B-channel RAM
+#   contents. No-transmit flag set to avoid spurious
+#   emissions. (Data word does matter.)
+
+bchannels.bchannel7.ram                                           0x00000000 0x00000006
+
+
+
+# B-channel 8: B-go 8 -> OC0
+bchannels.bchannel8.configuration.single                          0x00000001
+bchannels.bchannel8.configuration.double                          0x00000000
+bchannels.bchannel8.configuration.bx_or_delay                     0x00000000
+bchannels.bchannel8.configuration.bx_sync                         0x00000000
+bchannels.bchannel8.configuration.postscale                       0x00000000
+bchannels.bchannel8.configuration.initial_prescale                0x00000000
+bchannels.bchannel8.configuration.prescale                        0x00000000
+bchannels.bchannel8.configuration.repeat_cycle                    0x00000001
+
+# B-channel RAM contents:
+# - Data word: 0x8, control word 0x0: broadcast B-channel
+#   command.
+bchannels.bchannel8.ram                                           0x00000008 0x00000000
+# - End-of-sequence flag set to mark end of B-channel RAM
+#   contents. No-transmit flag set to avoid spurious
+#   emissions. (Data word does matter.)
+
+bchannels.bchannel8.ram                                           0x00000000 0x00000006
+
+
+
+# B-channel 9: B-go 9 -> Start
+bchannels.bchannel9.configuration.single                          0x00000001
+bchannels.bchannel9.configuration.double                          0x00000000
+bchannels.bchannel9.configuration.bx_or_delay                     0x00000000
+bchannels.bchannel9.configuration.bx_sync                         0x00000000
+bchannels.bchannel9.configuration.postscale                       0x00000000
+bchannels.bchannel9.configuration.initial_prescale                0x00000000
+bchannels.bchannel9.configuration.prescale                        0x00000000
+bchannels.bchannel9.configuration.repeat_cycle                    0x00000001
+
+# B-channel RAM contents:
+# - Data word: 0x10, control word 0x0: broadcast B-channel
+#   command.
+bchannels.bchannel9.ram                                           0x00000010 0x00000000
+# - End-of-sequence flag set to mark end of B-channel RAM
+#   contents. No-transmit flag set to avoid spurious
+#   emissions. (Data word does matter.)
+
+bchannels.bchannel9.ram                                           0x00000000 0x00000006
+
+
+# B-channel 10: B-go 10 -> Stop
+bchannels.bchannel10.configuration.single                         0x00000001
+bchannels.bchannel10.configuration.double                         0x00000000
+bchannels.bchannel10.configuration.bx_or_delay                    0x00000000
+bchannels.bchannel10.configuration.bx_sync                        0x00000000
+bchannels.bchannel10.configuration.postscale                      0x00000000
+bchannels.bchannel10.configuration.initial_prescale               0x00000000
+bchannels.bchannel10.configuration.prescale                       0x00000000
+bchannels.bchannel10.configuration.repeat_cycle                   0x00000001
+
+# B-channel RAM contents:
+# - Data word: 0x14, control word 0x0: broadcast B-channel
+#   command.
+bchannels.bchannel10.ram                                          0x00000014 0x00000000
+# - End-of-sequence flag set to mark end of B-channel RAM
+#   contents. No-transmit flag set to avoid spurious
+#   emissions. (Data word does matter.)
+
+bchannels.bchannel10.ram                                          0x00000000 0x00000006
+
+
+# B-channel 12: B-go 12 -> Test capture
+bchannels.bchannel12.configuration.single                         0x00000001
+bchannels.bchannel12.configuration.double                         0x00000000
+bchannels.bchannel12.configuration.bx_or_delay                    0x00000000
+bchannels.bchannel12.configuration.bx_sync                        0x00000000
+bchannels.bchannel12.configuration.postscale                      0x00000000
+bchannels.bchannel12.configuration.initial_prescale               0x00000000
+bchannels.bchannel12.configuration.prescale                       0x00000000
+bchannels.bchannel12.configuration.repeat_cycle                   0x00000001
+
+# B-channel RAM contents:
+# - Data word: 0x0c, control word 0x0: broadcast B-channel
+#   command.
+bchannels.bchannel12.ram                                          0x0000000c 0x00000000
+# - End-of-sequence flag set to mark end of B-channel RAM
+#   contents. No-transmit flag set to avoid spurious
+#   emissions. (Data word does matter.)
+
+bchannels.bchannel12.ram                                          0x00000000 0x00000006
+
+# To configure cyclic generator 0 to emit one BC0 (B-go 1) per orbit in BX 1, use the following register settings:
+cyclic_generator0.configuration.enabled                           0x00000001
+cyclic_generator0.configuration.permanent                         0x00000001
+cyclic_generator0.configuration.prescale                          0x00000000
+cyclic_generator0.configuration.initial_prescale                  0x00000000
+cyclic_generator0.configuration.postscale                         0x00000000
+cyclic_generator0.configuration.repeat_cycle                      0x00000000
+cyclic_generator0.configuration.pause                             0x00000000
+cyclic_generator0.configuration.start_bx                          0x00000dd4
+cyclic_generator0.configuration.trigger_word.bgo_command          0x00000001
+cyclic_generator0.configuration.trigger_word.bgo_sequence_command 0x00000000
+cyclic_generator0.configuration.trigger_word.id                   0x00000001
+cyclic_generator0.configuration.trigger_word.l1a                  0x00000000
+
+# To configure cyclic generator 0 to 1 trigger every 0xff orbits
+cyclic_generator1.configuration.enabled                           0x00000001
+cyclic_generator1.configuration.permanent                         0x00000001
+cyclic_generator1.configuration.prescale                          0x00000fff
+cyclic_generator1.configuration.initial_prescale                  0x00000000
+cyclic_generator1.configuration.postscale                         0x00000000
+cyclic_generator1.configuration.repeat_cycle                      0x00000001
+cyclic_generator1.configuration.pause                             0x00000000
+cyclic_generator1.configuration.start_bx                          0x00000016
+cyclic_generator1.configuration.trigger_word.bgo_command          0x00000000
+cyclic_generator1.configuration.trigger_word.bgo_sequence_command 0x00000000
+cyclic_generator1.configuration.trigger_word.id                   0x00000000
+cyclic_generator1.configuration.trigger_word.l1a                  0x00000001

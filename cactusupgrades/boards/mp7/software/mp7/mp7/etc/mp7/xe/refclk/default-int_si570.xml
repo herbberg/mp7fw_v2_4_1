@@ -1,0 +1,32 @@
+<clkcfg name="default-int_si570">
+  
+  <clksrc>internal</clksrc>
+  
+  <si570>
+    <cfg>true</cfg>
+    <file>SI570_125MHz_Regs.txt</file>
+  </si570>
+  
+  <si5326>
+    <cfgtop>false</cfgtop>
+    <cfgbot>false</cfgbot>
+    <filetop>MP7_SI5326_20140603_CKIN1_to_125MHz_CKOUT1_NoIncDec_Require_CKIN1_40MHz_Regs.txt</filetop>
+    <filebot>MP7_SI5326_20140603_CKIN1_to_125MHz_CKOUT1_NoIncDec_Require_CKIN1_40MHz_Regs.txt</filebot>
+  </si5326>
+  
+  <si53314>
+    <basetop>false</basetop>
+    <exttop>false</exttop>
+    <basebot>true</basebot>
+    <extbot>true</extbot>
+    <clkselbot>0</clkselbot> <!--bottom fan out clk select: 0 for 570, 1 for 5326 -->
+  </si53314>
+  
+  <xpoint> <!-- input options = [fpga, tclkc, tclka, fclka]-->
+    <tclkb>fpga</tclkb>
+    <fpga>fpga</fpga>
+    <clk2>fpga</clk2>
+    <clk1>fpga</clk1>
+  </xpoint>
+
+</clkcfg>

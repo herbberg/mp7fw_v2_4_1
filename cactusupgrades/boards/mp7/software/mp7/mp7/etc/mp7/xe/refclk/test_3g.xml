@@ -1,0 +1,32 @@
+<clkcfg name="test_3g">
+  
+  <clksrc>internal</clksrc>
+  
+  <si570>
+    <cfg>false</cfg>
+    <file>SI570_125MHz_Regs.txt</file>
+  </si570>
+  
+  <si5326>
+    <cfgtop>true</cfgtop>
+    <cfgbot>true</cfgbot>
+    <filetop>MP7_SI5326_20140928_XAXB_to_120MHz_CKOUT1_NoIncDec_Require_CKIN1_Disabled_Regs.txt</filetop>
+    <filebot>MP7_SI5326_20140928_XAXB_to_120MHz_CKOUT1_NoIncDec_Require_CKIN1_Disabled_Regs.txt</filebot>
+  </si5326>
+  
+  <si53314>
+    <basetop>true</basetop>
+    <exttop>false</exttop>
+    <basebot>true</basebot>
+    <extbot>false</extbot>
+    <clkselbot>1</clkselbot> <!--bottom fan out clk select: 0 for 570, 1 for 5326 -->
+  </si53314>
+  
+  <xpoint> <!-- input options = [fpga, tclkc, tclka, fclka]-->
+    <tclkb>fpga</tclkb>
+    <fpga>fpga</fpga>
+    <clk2>fpga</clk2>
+    <clk1>fpga</clk1>
+  </xpoint>
+
+</clkcfg>

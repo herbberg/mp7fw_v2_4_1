@@ -1,0 +1,20 @@
+
+src gth_calo/quad_wrapper_gth_calo.vhd
+src protocol/ext_align_gth_calo_spartan.vhd
+src wrappers/gth_quad_wrapper_calo.vhd
+
+?toolset=="Vivado"? src ../cgn/virtex7_rx_buf_asymmetric/virtex7_rx_buf_asymmetric.xci
+
+# Bug in Xilinx transceiver.  Need hacked version.
+src --cd gth_calo chan_gth_calo_4g8_gt.vhd chan_gth_calo_6g4_gt.vhd
+
+# Use VHDL from Vivado 4g8 Rx / 10g Tx core.
+?toolset=="Vivado"? src --cd ../gen_hdl/chan_gth_calo_4g8 chan_gth_calo_4g8.vhd chan_gth_calo_4g8_init.vhd chan_gth_calo_4g8_multi_gt.vhd
+?toolset=="Vivado"? src --cd ../gen_hdl/chan_gth_calo_4g8 chan_gth_calo_4g8_tx_startup_fsm.vhd chan_gth_calo_4g8_rx_startup_fsm.vhd chan_gth_calo_4g8_sync_block.vhd 
+
+# Use VHDL from Vivado 6g4 Tx / 10g Tx core.
+?toolset=="Vivado"? src --cd ../gen_hdl/chan_gth_calo_6g4 chan_gth_calo_6g4.vhd chan_gth_calo_6g4_init.vhd chan_gth_calo_6g4_multi_gt.vhd
+?toolset=="Vivado"? src --cd ../gen_hdl/chan_gth_calo_6g4 chan_gth_calo_6g4_tx_startup_fsm.vhd chan_gth_calo_6g4_rx_startup_fsm.vhd chan_gth_calo_6g4_sync_block.vhd 
+
+src --cd common gth_common.vhd gth_common_reset.vhd
+src --cd protocol data_check_8b10b.vhd usrclk_source_calo.vhd

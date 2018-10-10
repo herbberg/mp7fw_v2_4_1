@@ -1,0 +1,4 @@
+include gth_10g_sim.dep
+include gth_5g_sim.dep
+include gth_3g_sim.dep
+include gth_common.dep

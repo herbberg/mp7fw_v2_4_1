@@ -1,0 +1,14 @@
+<node description="MGT alignment control block" fwinfo="endpoint;width=1">
+	<node id="ctrl" address="0x0">
+		<node id="inc" mask="0x1"/>
+		<node id="dec" mask="0x2"/>
+		<node id="freeze" mask="0x4"/>
+		<node id="clr" mask="0x8"/>
+	</node>
+	<node id="stat" address="0x1">
+		<node id="marker_sub_bx" mask="0xf"/>
+		<node id="marker_bx" mask="0xfff0"/>
+		<node id="error_cnt" mask="0xffff0000"/>
+	</node>
+</node>
+
